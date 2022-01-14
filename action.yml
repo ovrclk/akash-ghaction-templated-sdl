@@ -11,4 +11,6 @@ runs:
     - name: Install gomplate
       shell: bash
       run: |-
-        apk add --no-cache gomplate
+        curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/<version>/gomplate_<os>-<arch>
+        chmod 755 /usr/local/bin/gomplate
+        gomplate --help
