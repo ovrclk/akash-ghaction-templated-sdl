@@ -2,9 +2,14 @@
 name: "Akash on Github Actions Dynamic SDL"
 description: "Update the Akash SDL File with Dynamic Values"
 inputs:
-  REPLACEMENT_VALUES: # id of input
-    description: "A JSON object of replacements to make"
-    required: true
+  TEMPLATE_PATH:
+    description: "template file to target for transform"
+    required: false
+    default: "deploy.tmpl"
+  OUT_PATH:
+    description: "target file to output transformed file"
+    required: false
+    default: "deploy.yaml"
 runs:
   using: "composite"
   steps:
@@ -13,4 +18,4 @@ runs:
       run: |-
         curl -o /usr/local/bin/gomplate -sSL https://github.com/hairyhenderson/gomplate/releases/download/v3.10.0/gomplate_linux-amd64
         chmod 755 /usr/local/bin/gomplate
-        gomplate -f ./deploy.tmpl
+        gomplate -f ${{inputs.SDL_PATH}} -o ${{inputs.OUT_PATH}}
