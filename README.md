@@ -23,12 +23,12 @@ In the github action runner, pass the templated values to the step as `env` vari
         MY_KEY: MY_VALUE
 ```
 
-Create a file `deploy.tmpl` as an example. Use the template placeholder, where dynamic values are required. `${{ .Env.MY_KEY }}`
+Create a file `deploy.tmpl` as an example. Use the template placeholder, where dynamic values are required. `{{ .Env.MY_KEY }}`
 
 ```yaml
 version: "2.0"
 
 services:
   web:
-    image: myimage:${{ .Env.MY_KEY }}
+    image: myimage:{{ .Env.MY_KEY }}
 ```
