@@ -1,0 +1,14 @@
+# action.yml
+name: "Akash on Github Actions Dynamic SDL"
+description: "Update the Akash SDL File with Dynamic Values"
+inputs:
+  REPLACEMENT_VALUES: # id of input
+    description: "A JSON object of replacements to make"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Install gomplate
+      shell: bash
+      run: |-
+        apk add --no-cache gomplate
